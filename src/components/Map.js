@@ -31,15 +31,6 @@ const clusterAvgScore = (markers) => {
     return Math.ceil(totalScore / markers.length);
 }
 
-const clusterCurrentTotal = (markers) => {
-    let total = 0;
-    markers.forEach((marker) => {
-        console.log(marker.options.currentTotal)
-        total += marker.options.currentTotal
-    })
-    return total;
-}
-
 const avgScoreToClass = (avgScore) => {
     let classStr = "" 
     switch(avgScore) {
@@ -61,11 +52,6 @@ const createClusterCustomIcon = function (cluster) {
     // Determine which colour to use by taking the average traffic_light score of all visible markers (rounded up)
     const avgScore = clusterAvgScore(markers);
     const clusterIconClass = avgScoreToClass(avgScore);
-    // Calculate current total for all visible markers
-    const clusterTotal = clusterCurrentTotal(markers);
-    // console.log(clusterTotal);
-
-    console.log(clusterCurrentTotal(markers));
 
     return L.divIcon({
       html: `<div><span>${cluster.getChildCount()}</span></div>`,
