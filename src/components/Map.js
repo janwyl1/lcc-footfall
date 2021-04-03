@@ -2,18 +2,11 @@ import React, {useState, useEffect} from 'react'
 import L from 'leaflet'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import MarkerClusterGroup from 'react-leaflet-markercluster'
+import {convertIsoDateStr} from '../helpers'
 import axios from 'axios'
-
-const convertIsoDateStr = (isoDate) => {
-    const jsDate = new Date(isoDate);
-    // const readableDate = jsDate.toLocaleString('en-GB', {timeZone: 'UTC', year:});
-    const readableTime = jsDate.toLocaleTimeString('en-GB', {timeZone: 'UTC'});
-    return readableTime;
-}
 
 const clusterAvgScore = (markers) => {
     let totalScore = 0;
-
     markers.forEach((marker)=>{
         switch(marker.options.trafficLight) {
             case 'red':
@@ -27,11 +20,10 @@ const clusterAvgScore = (markers) => {
                 totalScore +=1;
         }
     })
-
     return Math.ceil(totalScore / markers.length);
 }
 
-const avgScoreToClass = (avgScore) => {
+const clusterScoreToClass = (avgScore) => {
     let classStr = "" 
     switch(avgScore) {
         case 3:
@@ -47,18 +39,18 @@ const avgScoreToClass = (avgScore) => {
     return classStr;
 }
 
-const createClusterCustomIcon = function (cluster) {
+const createClusterIcon = function (cluster) {
     const markers = cluster.getAllChildMarkers();
-    // Determine which colour to use by taking the average traffic_light score of all visible markers (rounded up)
+    // Determine which colour to use by taking the average traffic_light score of all visible markers (rounded up) 
     const avgScore = clusterAvgScore(markers);
-    const clusterIconClass = avgScoreToClass(avgScore);
+    const clusterIconClass = clusterScoreToClass(avgScore);
 
     return L.divIcon({
       html: `<div><span>${cluster.getChildCount()}</span></div>`,
       className: clusterIconClass,
       iconSize: L.point(40, 40, true),
     });
-  }
+}
 
 const Map = () => {
 
@@ -91,15 +83,23 @@ const Map = () => {
         { isLoading ? (
             <div>Loading...</div>
         ) : (
-            <MapContainer center={[53.796027783166444, -1.5444784829114298]} zoom={10} scrollWheelZoom={true} style={{ height: '85vh' }}>
+            <MapContainer 
+                center={[53.796027783166444, -1.5444784829114298]} 
+                zoom={10} 
+                scrollWheelZoom={true} 
+                style={{ height: '85vh' }}>
             <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}>
+            <MarkerClusterGroup iconCreateFunction={createClusterIcon}>
                 {mapData && mapData.map((sensor, index)=>{
                     return (
-                    <Marker position={[sensor.latitude, sensor.longitude]} trafficLight={sensor.traffic_light} currentTotal={sensor.current_total} key={index}>
+                    <Marker 
+                        position={[sensor.latitude, sensor.longitude]} 
+                        trafficLight={sensor.traffic_light} 
+                        currentTotal={sensor.current_total} 
+                        key={index}>
                          <Popup>
                             <h3>{sensor.name}</h3>
                             <p>{sensor.current_total} in the last hour</p>
