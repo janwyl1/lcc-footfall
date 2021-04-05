@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+
 import greenMarker from '../img/marker-icon-2x-green.png'
 import amberMarker from '../img/marker-icon-2x-yellow.png'
 import redMarker from '../img/marker-icon-2x-red.png'

@@ -1,4 +1,3 @@
-import React, {useState, useEffect} from 'react'
 import L from 'leaflet'
 
 const clusterAvgScore = (markers) => {
@@ -45,6 +44,9 @@ const createClusterIcon =  (cluster) => {
       className: clusterIconClass,
       iconSize: L.point(40, 40, true),
     });
-}
+}   
 
-export default createClusterIcon
+
+export {
+    createClusterIcon
+}
