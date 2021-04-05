@@ -6,14 +6,14 @@ import {NavLink} from "react-router-dom";
 const Header = () => {
     return (
     <div className="header">
-        <NavLink to="/" aria-label="Home" className="logo"><img src={lccLogoWhite} alt="Leeds City Council Logo" /></NavLink>
-        <nav>
-            <ul>
-                <li><NavLink to="/" aria-label="Home" activeClassName="active" exact>Home</NavLink></li>
-                <li><NavLink to="/map" aria-label="Map" activeClassName="active" exact>Map</NavLink></li>
-            </ul>
-        </nav>
-    </div>
+            <NavLink to="/" aria-label="Home" className="logo"><img src={lccLogoWhite} alt="Leeds City Council Logo" /></NavLink>
+            <nav>
+                <ul>
+                    <li><NavLink to="/" aria-label="Home" activeClassName="active" exact>Home</NavLink></li>
+                    <li><NavLink to="/map" aria-label="Map" activeClassName="active" exact>Map</NavLink></li>
+                </ul>
+            </nav>
+        </div>
     )
 }
 

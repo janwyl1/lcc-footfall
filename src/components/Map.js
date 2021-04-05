@@ -1,12 +1,15 @@
 import React, {useState, useEffect} from 'react'
 // import L from 'leaflet'
-import { LayersControl, LayerGroup, MapContainer, TileLayer, Marker, Popup, Polyline, Polygon } from 'react-leaflet'
+import { LayersControl, LayerGroup, MapContainer, TileLayer, Marker, Popup, Polyline, Polygon, GeoJSON } from 'react-leaflet'
 import MarkerClusterGroup from 'react-leaflet-markercluster'
 import {convertIsoDateStr} from '../helpers/dates'
 import {createClusterIcon} from '../helpers/clusters'
 import setIcon from '../helpers/icons'
 import placeholderImg from '../img/150x150.png'
 import axios from 'axios'
+// import { Layer } from 'leaflet'
+// import * as leedsPostcodes from './postcodes.js'
+// import * as leedsPostcodes from '../leeds_geojson.geojson'
 
 const Map = () => {
 
@@ -102,7 +105,7 @@ const Map = () => {
                     </Polyline>
                     </LayerGroup>
                 </LayersControl.Overlay>
-                <LayersControl.Overlay name="Polygons">
+                <LayersControl.Overlay name="Custom Polygons">
                     <LayerGroup >
                    {/* Greek Street */}
                    <Polygon pathOptions={{color:'red', weight: 5, opacity: 0.5}} positions={
@@ -192,6 +195,42 @@ const Map = () => {
                             <p>Updated at convertIsoDateStr(sensor.updated_at)</p>
                         </Popup>                              
                     </Polygon>
+                    </LayerGroup>
+                </LayersControl.Overlay>
+                <LayersControl.Overlay name="Postcode">
+                    <LayerGroup>
+                        {/* <GeoJSON data={leedsPostcodes}></GeoJSON> */}
+                        <Polygon pathOptions={{color:'green', weight: 5, opacity: 0.5}} positions={
+                        [
+                            [ 53.79955640128425, -1.553147284798688 ],
+                            [ 53.799814552313315, -1.552656647417016 ],
+                            [ 53.799642134042934, -1.551871121406186 ],
+                            [ 53.79950232016762, -1.549931571221862 ],
+                            [ 53.79945203950703, -1.547530975669384 ],
+                            [ 53.79856911108675, -1.547625611432617 ],
+                            [ 53.79838961085384, -1.547805817829734 ],
+                            [ 53.798239892830004, -1.547685991845888 ],
+                            [ 53.79766824672311, -1.547825471078562 ],
+                            [ 53.797499370904866, -1.547510681706718 ],
+                            [ 53.797506586015395, -1.546827315894221 ],
+                            [ 53.797493514191146, -1.545961015642487 ],
+                            [ 53.79717751522895, -1.545881177985998 ],
+                            [ 53.79679168165075, -1.545585395495312 ],
+                            [ 53.79639798277383, -1.545822874550488 ],
+                            [ 53.79592409681894, -1.545744746079342 ],
+                            [ 53.79581138522738, -1.545739329208662 ],
+                            [ 53.79584583224464, -1.547220274202591 ],
+                            [ 53.796020356838454, -1.549034589657557 ],
+                            [ 53.7961510715642, -1.550052953824824 ],
+                            [ 53.79598132587358, -1.550223270566877 ],
+                            [ 53.796069948040895, -1.550994719428004 ],
+                            [ 53.79647854031847, -1.553901831968644 ],
+                            [ 53.79775857071902, -1.553440314585398 ],
+                            [ 53.799436883262196, -1.553123891816028 ],
+                            [ 53.79955640128425, -1.553147284798688 ]]
+                    }>
+                        </Polygon>
+                         
                     </LayerGroup>
                 </LayersControl.Overlay>
             </LayersControl>
