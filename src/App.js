@@ -1,14 +1,30 @@
 import './App.css';
 import Map from './components/Map'
 import Header from './components/Header'
-import Footer from './components/Footer'
+import Home from './components/Home'
+// import Footer from './components/Footer'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Map />
-      <Footer />
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/map">
+            <Map />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+        
+      </Router>
     </div>
   );
 }

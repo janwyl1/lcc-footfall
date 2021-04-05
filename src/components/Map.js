@@ -43,7 +43,7 @@ const Map = () => {
                 center={[53.796027783166444, -1.5444784829114298]} 
                 zoom={10} 
                 scrollWheelZoom={true} 
-                style={{ height: '85vh' }}
+                className="map"
             >
             <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors | Built by <a href="https://parall.ax">Parallax</a>'
@@ -64,8 +64,12 @@ const Map = () => {
                                 <Popup>
                                     <h3>{sensor.name}</h3>
                                     <img src={placeholderImg} alt="Placeholder" />
-                                    <p>Current: {sensor.current_total}</p>
-                                    <p>Updated at {convertIsoDateStr(sensor.updated_at)}</p>
+                                    <ul>
+                                        <li><b>Footfall:</b> {sensor.current_total}</li>
+                                        <li><b>Updated:</b> {convertIsoDateStr(sensor.updated_at)}</li>
+                                        <li><b>Lat:</b> {sensor.latitude.substring(0, 8)}</li>
+                                        <li><b>Long:</b> {sensor.longitude.substring(0, 8)}</li>
+                                    </ul>
                                 </Popup>
                             </Marker>
                             )
@@ -77,11 +81,25 @@ const Map = () => {
                     {/* North Street Wetherby */}
                     <Polyline pathOptions={{color:'green', weight: 10, opacity: 0.5}} positions={
                         [[53.92861,-1.38551],[53.92889,-1.38543],[53.92935,-1.38535],[53.9296,-1.38531],[53.92974,-1.38526],[53.9298,-1.38523],[53.93003,-1.38512],[53.93018,-1.38505],[53.93022,-1.38509],[53.93025,-1.38505],[53.93026,-1.38501],[53.93031,-1.38496],[53.93048,-1.38486],[53.93064,-1.38474],[53.93107,-1.38435],[53.93145,-1.38401]]
-                    } /> 
+                    }>
+                        <Popup>
+                            <h3>sensor.name</h3>
+                            <img src={placeholderImg} alt="Placeholder" />
+                            <p>Current: sensor.current_total</p>
+                            <p>Updated at convertIsoDateStr(sensor.updated_at)</p>
+                        </Popup>
+                    </Polyline> 
                     {/* Market Place Wetherby */}
                     <Polyline pathOptions={{color:'red', weight: 10, opacity: 0.5}} positions={
                         [[53.928554874484874, -1.3869093056904334], [53.92849733121453, -1.3864997673931516], [53.928438417784164, -1.386306632855229], [53.92832196075853, -1.3862996520887978], [53.92823975560363, -1.3864974404710078], [53.92821235384934, -1.3867906326611072], [53.92821783420164, -1.3868674210918477], [53.928538433558586, -1.3869162864568643]]
-                    } /> 
+                    }>
+                        <Popup>
+                            <h3>sensor.name</h3>
+                            <img src={placeholderImg} alt="Placeholder" />
+                            <p>Current: sensor.current_total</p>
+                            <p>Updated at convertIsoDateStr(sensor.updated_at)</p>
+                        </Popup>
+                    </Polyline>
                     </LayerGroup>
                 </LayersControl.Overlay>
                 <LayersControl.Overlay name="Polygons">
@@ -100,25 +118,80 @@ const Map = () => {
                     {/* Boar Lane */}
                    <Polygon pathOptions={{color:'red', weight: 5, opacity: 0.5}} positions={
                         [[53.79618264923007, -1.5479878569730763], [53.79667640981577, -1.5472689373919803], [53.795876514747576, -1.545563593269381], [53.795175359609836, -1.545981569770018]]
-                    }></Polygon>
+                    }>
+                        <Popup>
+                            <h3>sensor.name</h3>
+                            <img src={placeholderImg} alt="Placeholder" />
+                            <p>Current: sensor.current_total</p>
+                            <p>Updated at convertIsoDateStr(sensor.updated_at)</p>
+                        </Popup>
+                    </Polygon>
                     {/* Albion Street */}
                    <Polygon pathOptions={{color:'red', weight: 5, opacity: 0.5}} positions={
                         [[53.79584142069808, -1.5454477292317268], [53.79950131836711, -1.5453651090813278], [53.79942202396944, -1.5447144753969353], [53.795822297947424, -1.5444644212365308]]
-                    }></Polygon>
+                    }>
+                        <Popup>
+                            <h3>sensor.name</h3>
+                            <img src={placeholderImg} alt="Placeholder" />
+                            <p>Current: sensor.current_total</p>
+                            <p>Updated at convertIsoDateStr(sensor.updated_at)</p>
+                        </Popup>                        
+                    </Polygon>
                     {/* Commercial Street */}
                    <Polygon pathOptions={{color:'yellow', weight: 5, opacity: 0.5}} positions={
                         [[53.797903187033576, -1.5444571061745607], [53.79699110909598, -1.5444339507279214], [53.79710681635566, -1.54243781048838], [53.79787781446195, -1.54229165067072]]
-                    }></Polygon>
+                    }>
+                        <Popup>
+                            <h3>sensor.name</h3>
+                            <img src={placeholderImg} alt="Placeholder" />
+                            <p>Current: sensor.current_total</p>
+                            <p>Updated at convertIsoDateStr(sensor.updated_at)</p>
+                        </Popup>                              
+                    </Polygon>
                     {/* Briggate (North) */}
                     <Polygon pathOptions={{color:'green', weight: 5, opacity: 0.5}} positions={
                         [[53.79927371425448, -1.542283948484872], [53.798004841351656, -1.5425115003150263], [53.798012747220675, -1.5417485324139206], [53.799261855806925, -1.5416816054050517]]
-                    }></Polygon>
+                    }>
+                        <Popup>
+                            <h3>sensor.name</h3>
+                            <img src={placeholderImg} alt="Placeholder" />
+                            <p>Current: sensor.current_total</p>
+                            <p>Updated at convertIsoDateStr(sensor.updated_at)</p>
+                        </Popup>                              
+                    </Polygon>
                      {/* Briggate (South) */}
                      <Polygon pathOptions={{color:'green', weight: 5, opacity: 0.5}} positions={
                         [[53.79708153632742, -1.542648581257603], [53.79604978491607, -1.5428158987797755], [53.796061644271894, -1.5422604046061632], [53.79706572423676, -1.5421600140928597]]
-                    }></Polygon>
-
-
+                    }>
+                        <Popup>
+                            <h3>sensor.name</h3>
+                            <img src={placeholderImg} alt="Placeholder" />
+                            <p>Current: sensor.current_total</p>
+                            <p>Updated at convertIsoDateStr(sensor.updated_at)</p>
+                        </Popup>                              
+                    </Polygon>
+                  {/* Vicar Lane) */}
+                  <Polygon pathOptions={{color:'green', weight: 5, opacity: 0.5}} positions={
+                        [[53.79698037102715, -1.5404741719756434], [53.800790790144006, -1.5395545535949062], [53.80064505288013, -1.5392005020223467], [53.796957097892324, -1.5401446395491722]]
+                    }>
+                        <Popup>
+                            <h3>sensor.name</h3>
+                            <img src={placeholderImg} alt="Placeholder" />
+                            <p>Current: sensor.current_total</p>
+                            <p>Updated at convertIsoDateStr(sensor.updated_at)</p>
+                        </Popup>                              
+                    </Polygon>
+                  {/* Merrion Street) */}
+                  <Polygon pathOptions={{color:'green', weight: 5, opacity: 0.5}} positions={
+                        [[53.80096816436116, -1.5446943072826997], [53.800773736547804, -1.5446419333540222], [53.80044674228324, -1.54105057823185], [53.800627915096186, -1.5409757583337396]]
+                    }>
+                        <Popup>
+                            <h3>sensor.name</h3>
+                            <img src={placeholderImg} alt="Placeholder" />
+                            <p>Current: sensor.current_total</p>
+                            <p>Updated at convertIsoDateStr(sensor.updated_at)</p>
+                        </Popup>                              
+                    </Polygon>
                     </LayerGroup>
                 </LayersControl.Overlay>
             </LayersControl>

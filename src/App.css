@@ -6,15 +6,143 @@
 
 body {
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-weight: 400;
+  font-size: 18px;
   line-height: 1.4;
+  color: #37474F;
 }
 
-h1, h2, h3, h4, h5 {
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-  font-weight: 700;
-}
 
 h1 {
-  font-size: 1.2em;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+  font-size: 42px;
+  color: #007298;
+  margin-bottom: 36px;
+}
+
+h2 {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #37474F;
+  margin-bottom: 12px;
+}
+
+.container-home {
+  display: flex;
+  width: 100%;
+}
+
+.col-left {
+  flex-shrink: 0;
+  flex-basis: 40%;
+  margin-top: 12em;
+  display: flex;
+  flex-direction: column; 
+  
+}
+
+.col-left-inner {
+  align-self: center;
+  margin: 0 1em;
+}
+
+.col-right {
+  flex-shrink: 0;
+  flex-basis: 60%;
+  background: url('./img/leeds.jpg') no-repeat top right ;
+  background-size: cover;
+  height: 100vh;
+}
+
+@media only screen and (max-width: 1024px) {
+  .container-home {
+    flex-direction: column;
+  }
+  .col-right {
+    display: none;
+  }
+}
+
+.col-left p {
+  margin-bottom: 1em;
+  max-width: 460px;
+}
+
+.body-link, .body-link:link {
+  color: #007298 !important;
+}
+
+.body-link:hover, .body-link:active {
+  text-decoration: none;
+}
+
+.body-link:visited {
+  color: #37474F !important;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: #007298;
+  color: #fff;
+  padding: 10px;
+  height: 10vh;
+  min-height: 80px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li a {
+  margin-right: 2em;
+  color: #fff;
+  text-decoration: none;
+  padding-bottom: 3px;
+}
+nav ul li a:hover, nav ul li a:focus, nav ul li a:active, .active {
+  border-bottom: 3px solid #FFBF47;
+}
+.logo {
+  border: none;
+}
+
+.blue-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: #007298;
+  color: #fff;
+  padding: 18px 60px;
+  border-radius: 15px;
+  outline: none;
+  border: none;
+  font-weight: 600;
+  margin-top: 36px;
+  margin-bottom: 36px;
+  transition: background-color .3s;
+  -webkit-transition: background-color .3s;
+}
+.blue-btn:hover {
+  background: #37474F;
+}
+.arrow {
+  padding-left: 16px;
+  height: 12px;
+  /* transform: none; */
+}
+
+.blue-btn:hover .arrow {
+  -webkit-transform: translateX(4px);
+  transform: translateX(4px);
+  transition: transform .3s,-webkit-transform .3s;
+}
+
+.map {
+  height: 90vh;
 }
