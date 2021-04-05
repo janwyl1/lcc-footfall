@@ -1,16 +1,11 @@
 import React, {useState, useEffect} from 'react'
-// import L from 'leaflet'
 import { LayersControl, LayerGroup, MapContainer, TileLayer, Marker, Popup, Polyline, Polygon, GeoJSON } from 'react-leaflet'
 import MarkerClusterGroup from 'react-leaflet-markercluster'
 import {convertIsoDateStr} from '../helpers/dates'
 import {createClusterIcon} from '../helpers/clusters'
 import setIcon from '../helpers/icons'
-import placeholderImg from '../img/150x150.png'
 import popupExample from '../img/leeds-popup-example.jpeg'
 import axios from 'axios'
-// import { Layer } from 'leaflet'
-// import * as leedsPostcodes from './postcodes.js'
-// import * as leedsPostcodes from '../leeds_geojson.geojson'
 
 const Map = () => {
 
