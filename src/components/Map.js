@@ -124,6 +124,16 @@ const Map = () => {
                    <Polygon pathOptions={{color:'red', weight: 5, opacity: 0.5}} positions={
                         [[53.79875905658598, -1.5492105244763497], [53.79814680217587, -1.54945733804244], [53.7980826607204, -1.5470978003506182], [53.79875322563375, -1.5470978003506182]]
                     }>
+
+
+
+<Marker 
+                                position={[53.79875905658598, -1.5492105244763497]} 
+                                trafficLight={"green"} 
+                                currentTotal={10} 
+                                icon={setIcon("green")}
+                                key={999}
+                                >
                          <Popup className="popup">
                         <img src={popupExample} alt="Placeholder" />
 
@@ -137,11 +147,19 @@ const Map = () => {
                         </ul>
                         </div>
                     </Popup>
+                    </Marker>
                     </Polygon> 
                     {/* Boar Lane */}
                    <Polygon pathOptions={{color:'red', weight: 5, opacity: 0.5}} positions={
                         [[53.79618264923007, -1.5479878569730763], [53.79667640981577, -1.5472689373919803], [53.795876514747576, -1.545563593269381], [53.795175359609836, -1.545981569770018]]
                     }>
+                        <Marker 
+                                position={[53.79667640981577, -1.5472689373919803]} 
+                                trafficLight={"green"} 
+                                currentTotal={10} 
+                                icon={setIcon("green")}
+                                key={999}
+                                >
                          <Popup className="popup">
                         <img src={popupExample} alt="Placeholder" />
 
@@ -155,6 +173,7 @@ const Map = () => {
                         </ul>
                         </div>
                     </Popup>
+                    </Marker>
                     </Polygon>
                     {/* Albion Street */}
                    <Polygon pathOptions={{color:'red', weight: 5, opacity: 0.5}} positions={
@@ -178,6 +197,13 @@ const Map = () => {
                    <Polygon pathOptions={{color:'yellow', weight: 5, opacity: 0.5}} positions={
                         [[53.797903187033576, -1.5444571061745607], [53.79699110909598, -1.5444339507279214], [53.79710681635566, -1.54243781048838], [53.79787781446195, -1.54229165067072]]
                     }>
+                                          <Marker 
+                                position={[53.79710681635566, -1.54243781048838]} 
+                                trafficLight={"green"} 
+                                currentTotal={10} 
+                                icon={setIcon("green")}
+                                key={999}
+                                >
                          <Popup className="popup">
                         <img src={popupExample} alt="Placeholder" />
 
@@ -190,7 +216,8 @@ const Map = () => {
                             <li><b>Long:</b> sensor.longitude</li>
                         </ul>
                         </div>
-                    </Popup>                              
+                    </Popup>       
+                    </Marker>                       
                     </Polygon>
                     {/* Briggate (North) */}
                     <Polygon pathOptions={{color:'green', weight: 5, opacity: 0.5}} positions={
@@ -302,6 +329,25 @@ const Map = () => {
                          
                     </LayerGroup>
                 </LayersControl.Overlay>
+                <LayersControl.Overlay name="My Maps">
+                    <LayerGroup>
+                        {/* <GeoJSON data={leedsPostcodes}></GeoJSON> */}
+                        <Polygon pathOptions={{color:'green', weight: 5, opacity: 0.5}} positions={
+                         [
+                            [ 53.7968677, -1.5470917 ],
+                            [ 53.799149, -1.5470273 ],
+                            [ 53.7992124, -1.5490873 ],
+                            [ 53.7978309, -1.5495808 ],
+                            [ 53.7968677, -1.5470917 ]
+                          ]
+                    }>
+                        </Polygon>
+                         
+                    </LayerGroup>
+                </LayersControl.Overlay>
+               
+
+
             </LayersControl>
         </MapContainer>
         )}

@@ -103,13 +103,25 @@ nav ul {
 }
 nav ul li a {
   margin-right: 2em;
+  display: block;
   color: #fff;
   text-decoration: none;
   padding-bottom: 3px;
 }
-nav ul li a:hover, nav ul li a:focus, nav ul li a:active, .active {
-  border-bottom: 3px solid #FFBF47;
+
+nav ul li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #FFBF47;
+    transition: width .3s;
 }
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
 .logo {
   border: none;
 }
