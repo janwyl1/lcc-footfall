@@ -98,7 +98,6 @@ const Map = () => {
                                 >
                                 <Popup className="popup">
                                     <img src={popupExample} alt="Placeholder" />
-                                    {/* <div className="popup-head"></div> */}
                                     <div className="popup-inner">
                                     <h3>{sensor.name}</h3>
                                     <ul>
