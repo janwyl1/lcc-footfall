@@ -2,7 +2,7 @@ import './App.css';
 import Map from './components/Map'
 import Header from './components/Header'
 import Home from './components/Home'
-// import Footer from './components/Footer'
+
 import {
   BrowserRouter as Router,
   Switch,
